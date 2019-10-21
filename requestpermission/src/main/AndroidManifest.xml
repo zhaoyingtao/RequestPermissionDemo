@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.snow.rpermission">
+
+    <application>
+        <activity
+            android:name="com.snow.rpermission.BridgeActivity"
+            android:theme="@style/ActivityTransparentTheme" />
+    </application>
+</manifest>
