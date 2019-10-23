@@ -1,6 +1,11 @@
 # RequestPermissionDemo
 权限申请封装依赖库
 
+引用：   
+```
+ api 'com.bintray.library:snowpermission:1.0.0'
+```
+
 使用方法很简单，就不做解释了：
 ```
  RequestPermissions.with(this)
