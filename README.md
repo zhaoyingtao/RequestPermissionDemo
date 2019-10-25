@@ -1,5 +1,7 @@
 # RequestPermissionDemo
-权限申请封装依赖库
+权限申请封装依赖库   
+
+![演示](https://git.oschina.net/vincent_zyt/PictureWarehouse/raw/master/permission/permission_show.gif)
 
 引用：   
 ```
