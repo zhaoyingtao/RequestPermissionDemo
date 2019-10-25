@@ -1,6 +1,8 @@
 # RequestPermissionDemo
 权限申请封装依赖库   
 
+![sddd](https://github.com/zhaoyingtao/RequestPermissionDemo/blob/master/app/permission_show.gif?raw=true)
+
 引用：   
 ```
  api 'com.bintray.library:snowpermission:1.0.0'
