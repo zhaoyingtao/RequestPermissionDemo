@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.snow.rpermission.ActionCallBack;
+import com.snow.rpermission.RefuseDialogCancelListener;
 import com.snow.rpermission.RequestPermissions;
 
 import java.util.List;
@@ -27,8 +28,16 @@ public class MainActivity extends AppCompatActivity {
      */
     private void permission() {
         RequestPermissions.with(this)
-                .permissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_PHONE_STATE})
+//                .setRefuseDialogContent("shdk即可获得尽快发货快")
+                .showRefuseDialog(new RefuseDialogCancelListener() {
+                    @Override
+                    public void clickCancel() {
+                        finish();
+                    }
+                })
+                .permissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_PHONE_STATE,
+                        Manifest.permission.READ_CONTACTS,"android.permission.CALL_PHONE"})
                 .onGranted(new ActionCallBack() {
                     @Override
                     public void callBack(List<String> strings) {
@@ -51,23 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
-    private String getPermissionRemind(String permission) {
-        if ("android.permission.READ_EXTERNAL_STORAGE".equals(permission)) {//存储
-            return "进入页面后点击“权限”，打开“存储”权限。";
-        } else if ("android.permission.READ_PHONE_STATE".equals(permission)) {//电话
-            return "进入页面后点击“权限”，打开“电话”权限。";
-        } else if ("android.permission.CAMERA".equals(permission)) {//拍照
-            return "进入页面后点击“权限”，打开“相机”权限。";
-        } else {
-            return "请点击“设置”-“权限”-打开所需权限";
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            permission();
-        }
+        permission();
     }
 }
