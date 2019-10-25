@@ -1,8 +1,6 @@
 # RequestPermissionDemo
 权限申请封装依赖库   
 
-![演示](https://git.oschina.net/vincent_zyt/PictureWarehouse/raw/master/permission/permission_show.gif)
-
 引用：   
 ```
  api 'com.bintray.library:snowpermission:1.0.0'
