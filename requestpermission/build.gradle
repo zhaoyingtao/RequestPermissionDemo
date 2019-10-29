@@ -30,7 +30,7 @@ publish {
     userOrg = 'zhaoyingtao'
     groupId = 'com.bintray.library'
     artifactId = 'snowpermission'
-    publishVersion = '1.1.0'
+    publishVersion = '1.1.1'
     desc = 'Oh hi, this is a nice description for a project, right?'
 }
 dependencies {
