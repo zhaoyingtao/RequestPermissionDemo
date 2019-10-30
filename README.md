@@ -1,25 +1,35 @@
 # RequestPermissionDemo
+
+[ ![Download](https://api.bintray.com/packages/zhaoyingtao/maven/snowpermission/images/download.svg) ](https://bintray.com/zhaoyingtao/maven/snowpermission/_latestVersion)
+
 权限申请封装依赖库   
 
 ![sddd](https://github.com/zhaoyingtao/RequestPermissionDemo/blob/master/app/permission_show.gif?raw=true)
 
 引用：   
 ```
- api 'com.bintray.library:snowpermission:1.0.0'
+ api 'com.bintray.library:snowpermission:1.1.1'
 ```
 
 使用方法很简单，就不做解释了：
 ```
  RequestPermissions.with(this)
+                .setRefuseDialogContent("去设置打开权限")//可以自定义拒绝权限后提示框的内容，默认根据拒绝权限提示对应内容
+                .showRefuseDialog(new RefuseDialogCancelListener() {//拒绝权限后弹窗的取消后的操作监听
+                    @Override
+                    public void clickCancel() {
+                        finish();
+                    }
+                })
                 .permissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_PHONE_STATE})
-                .onGranted(new ActionCallBack() {
+                .onGranted(new ActionCallBack() {//所有权限都授权成功
                     @Override
                     public void callBack(List<String> strings) {
                         Log.e("qq", "======获取权限成功");
                     }
                 })
-                .onDenied(new ActionCallBack() {
+                .onDenied(new ActionCallBack() {//权限中至少有一个没有授权
                     @Override
                     public void callBack(List<String> strings) {
                         Log.e("qq", "======获取权限失败====");
