@@ -6,6 +6,8 @@ import android.os.Build;
 
 import androidx.core.app.ActivityCompat;
 
+import java.util.List;
+
 /**
  * author : zyt
  * e-mail : 632105276@qq.com
@@ -35,6 +37,24 @@ public class SPermissionHelper {
         }
         for (int i = 0; i < permissions.length; i++) {
             if (!verifyPermissions(permissions[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 验证权限,然后返回 true false
+     *
+     * @param permissions 有一个权限没有通过直接返回false
+     * @return
+     */
+    public boolean verifyPermissions(List<String> permissions) {
+        if (permissions == null) {
+            return false;
+        }
+        for (int i = 0; i < permissions.size(); i++) {
+            if (!verifyPermissions(permissions.get(i))) {
                 return false;
             }
         }

@@ -38,6 +38,7 @@ public class RequestPermissions {
 
     /**
      * 权限请求全部允许回调
+     *
      * @param granted
      * @return
      */
@@ -45,8 +46,10 @@ public class RequestPermissions {
         this.granted = granted;
         return this;
     }
+
     /**
      * 权限请求有一个没允许回调
+     *
      * @param onDenied
      * @return
      */
@@ -82,6 +85,12 @@ public class RequestPermissions {
     }
 
     public void start() {
+        if (SPermissionHelper.with(activity).verifyPermissions(mPermissions)) {
+            if (granted != null) {
+                granted.callBack(mPermissions);
+            }
+            return;
+        }
         BridgeActivity.requestPermission(activity, mPermissions);
         BridgeActivity.setRequestPermissionsCall(new BridgePermissionCall() {
             @Override
