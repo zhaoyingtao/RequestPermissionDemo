@@ -85,6 +85,9 @@ public class RequestPermissions {
     }
 
     public void start() {
+        if (refusePermissionDialog != null && refusePermissionDialog.isShowing()) {
+            return;
+        }
         if (SPermissionHelper.with(activity).verifyPermissions(mPermissions)) {
             if (granted != null) {
                 granted.callBack(mPermissions);
@@ -103,7 +106,7 @@ public class RequestPermissions {
                     if (onDenied != null) {
                         onDenied.callBack(callPermissions);
                     }
-                    if (isShowRefuseDialog && callPermissions.size() > 0) {
+                    if (isShowRefuseDialog && callPermissions.size() > 0 && !refusePermissionDialog.isShowing()) {
                         refusePermissionDialog.show(JudgePermission.getPermissionRemind(callPermissions.get(0)));
                     }
                 }
