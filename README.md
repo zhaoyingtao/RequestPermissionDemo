@@ -11,7 +11,7 @@
  api 'com.bintray.library:snowpermission:1.1.1'
 ```
 
-使用方法很简单，就不做解释了：
+使用方法很简单，就不做解释了：注意：不要在onresume方法中调用，会出现弹窗覆盖问题
 ```
  RequestPermissions.with(this)
                 .setRefuseDialogContent("去设置打开权限")//可以自定义拒绝权限后提示框的内容，默认根据拒绝权限提示对应内容
